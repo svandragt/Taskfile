@@ -9,6 +9,7 @@ The `Taskfile.sh` in this repository, when added to a directory in your PATH, co
 An example `.Taskfile` could look like this:
 
 ```sh
+# Example taskfile
 sw() {
   # git fuzzy branch switcher.
   git switch $(git branch | grep $1 | head -n1)
@@ -31,9 +32,9 @@ And to run a task:
 To "install", git clone this repo and add a symlink to `Taskfile.sh` to you a directory in your path, such as `~/bin/t`. Make the symlink executable. Klaar is kees!
 
 ```
-git clone https://github.com/svandragt/Taskfile && cd Taskfile
-ln ./Taskfile.sh ~/bin/t
-chmod +x ~/bin/t
+$ git clone https://github.com/svandragt/Taskfile && cd Taskfile
+$ ln ./Taskfile.sh ~/bin/t
+$ chmod +x ~/bin/t
 ```
 
 ## Usage
