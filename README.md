@@ -28,7 +28,13 @@ And to run a task:
 
 
 ## Install
-To "install", git clone this repo and add a symlink to `Taskfile.sh` to you a directory in your path, such as `~/bin/t`. Run `chmod +x t` to make the runner executable. Klaar is kees!
+To "install", git clone this repo and add a symlink to `Taskfile.sh` to you a directory in your path, such as `~/bin/t`. Make the symlink executable. Klaar is kees!
+
+```
+git clone https://github.com/svandragt/Taskfile && cd Taskfile
+ln ./Taskfile.sh ~/bin/t
+chmod +x ~/bin/t
+```
 
 ## Usage
 
