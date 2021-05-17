@@ -4,7 +4,7 @@ PATH=./node_modules/.bin:$PATH
 edit() {
     # Edit existing .Taskfile or this script.
     file=".Taskfile"
-    if [ ! -f "$file" ] then
+    if [ ! -f "$file" ]; then
         file="$0"
     fi
     echo "Editing $file..."
@@ -15,7 +15,7 @@ help() {
     # List all tasks
     echo "$0 <task> <args>"
     echo "Tasks:"
-    compgen -A function | grep --invert-match"_" | cat -n
+    compgen -A function | grep --invert-match "_" | cat -n
 }
 
 _main() {
