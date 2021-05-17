@@ -30,7 +30,7 @@ _main() {
         tfiles=("${dir}/.Taskfile" "${dir}/.Taskfile.local")
         for tf in "${tfiles[@]}"; do
             # Skip if the file doesn't exist
-            [ ! -f $tf] && continue
+            [ ! -f $tf ] && continue
             echo "Using: $tf"; source "$tf"
         done
     done
