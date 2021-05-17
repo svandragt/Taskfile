@@ -33,7 +33,7 @@ To "install", git clone this repo and add a symlink to `Taskfile.sh` to you a di
 
 ```
 $ git clone https://github.com/svandragt/Taskfile && cd Taskfile
-$ ln ./Taskfile.sh ~/bin/t
+$ ln -s ./Taskfile.sh ~/bin/t
 $ chmod +x ~/bin/t
 ```
 
@@ -44,12 +44,11 @@ Open your directory and create a new `.Taskfile`. Edit it with your favourite ed
 To view available tasks, use `t` (which calls the `help` task):
 
     $ t
-    Using: //Users/sander/.Taskfile
-    Using: //Users/sander/dev/.Taskfile
+    Using: /Users/sander/.Taskfile
+    Using: /Users/sander/dev/.Taskfile
      
     /Users/sander/bin/Taskfile.sh <task> <args>
     Tasks:
          1  edit
          2  help
          3  sw
-    Task completed in 0m0.004s
