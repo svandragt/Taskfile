@@ -3,35 +3,35 @@ PATH=./node_modules/.bin:$PATH
 
 edit() {
     # Edit existing .Taskfile or this script.
-    FILE=".Taskfile"
-    if [ ! -f "$FILE" ]; then
-        FILE="$0"
+    file=".Taskfile"
+    if [ ! -f "$file" ] then
+        file="$0"
     fi
-    echo "Editing $FILE..."
-    $EDITOR "$FILE"
+    echo "Editing $file..."
+    $EDITOR "$file"
 }
 
 help() {
     # List all tasks
     echo "$0 <task> <args>"
     echo "Tasks:"
-    compgen -A function | grep -v "_" | cat -n
+    compgen -A function | grep --invert-match"_" | cat -n
 }
 
 _main() {
     # Load parent .Taskfile files
     IFS='/' read -ra dirs <<< "$(pwd)"
     dir=''
-    for i in "${dirs[@]}"
-    do
+    for i in "${dirs[@]}"; do
+        # Skip empty directories
         [ -z "$i" ] && continue
         dir="${dir}/${i}"   
-        files=("${dir}/.Taskfile" "${dir}/.Taskfile.local")
-        for f in "${files[@]}"
-        do
-            if [ -f $f ]; then
-              echo "Using: $f"; source "$f"
-            fi
+
+        tfiles=("${dir}/.Taskfile" "${dir}/.Taskfile.local")
+        for tf in "${tfiles[@]}"; do
+            # Skip if the file doesn't exist
+            [ ! -f $tf] && continue
+            echo "Using: $tf"; source "$tf"
         done
     done
     echo
