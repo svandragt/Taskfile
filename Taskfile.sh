@@ -26,10 +26,13 @@ _main() {
     do
         [ -z "$i" ] && continue
         dir="${dir}/${i}"   
-        f="${dir}/.Taskfile"
-        if [ -f $f ]; then
-          echo "Using: $f"; source "$f"
-        fi
+        files=("${dir}/.Taskfile" "${dir}/.Taskfile.local")
+        for f in "${files[@]}"
+        do
+            if [ -f $f ]; then
+              echo "Using: $f"; source "$f"
+            fi
+        done
     done
     echo
 

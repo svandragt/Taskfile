@@ -2,7 +2,7 @@
 
 This is a fork of Taskfile, optimised as a task runner. See https://github.com/adriancooney/Taskfile for the original project.
 
-This repository contains the runner `Taskfile.sh` for getting started in your own projects. It runs task files, a bash (or zsh etc.) script that contains functions that can be called via the runner. These must be called `.Taskfile`. The runner detects any task files in the current, parent, grandparent etc directory  of the directory you're in.
+This repository contains the runner `Taskfile.sh` for getting started in your own projects. It runs task files, a bash (or zsh etc.) script that contains functions that can be called via the runner. The runner detects any task files in the current, parent, grandparent etc directory  of the directory you're in. These must be called `.Taskfile` or `.Taskfile.local`. The difference is only in that the former should be added to a project's version control, and the latter should be added to `.gitignore`.
 
 The `Taskfile.sh` in this repository, when added to a directory in your PATH, contains the runner and help function which lists all the detected tasks.
 
@@ -20,8 +20,8 @@ And to run a task:
 
 
     $ t sw CSW-22
-    Using: //Users/sander/.Taskfile
-    Using: //Users/sander/dev/.Taskfile
+    Using: /Users/sander/.Taskfile
+    Using: /Users/sander/dev/.Taskfile
      
     Switched to branch 'feature/CSW-22-automatic-language-redirection'
     Your branch is up to date with 'origin/feature/CSW-22-automatic-language-redirection'.
