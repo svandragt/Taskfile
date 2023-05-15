@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 PATH=./node_modules/.bin:$PATH
 
-edit() {
+await_docker() {
+    until docker ps; do
+	echo -n . && sleep 1
+    done
+}
+
+t:edit() {
     # Edit existing .Taskfile or this script.
     file=".Taskfile"
     if [ ! -f "$file" ]; then
@@ -11,7 +17,7 @@ edit() {
     $EDITOR "$file"
 }
 
-help() {
+t:help() {
     # List all tasks
     echo "$0 <task> <args>"
     echo "Tasks:"
@@ -36,6 +42,6 @@ _main() {
     done
     echo
 
-    ${@:-help}    
+    ${@:-"t:help"}    
 }
 _main $@
