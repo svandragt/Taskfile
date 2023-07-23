@@ -33,7 +33,7 @@ To "install", git clone this repo and add a symlink to `Taskfile.sh` to you a di
 
 ```
 $ git clone https://github.com/svandragt/Taskfile && cd Taskfile
-$ ln -s ./Taskfile.sh ~/bin/t
+$ ln -s $PWD/Taskfile.sh ~/bin/t
 $ chmod +x ~/bin/t
 ```
 
