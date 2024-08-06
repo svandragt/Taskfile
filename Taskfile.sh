@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 PATH=./node_modules/.bin:$PATH
 
-_await-docker() {
-    until docker ps; do
-	echo -n . && sleep 1
-    done
-}
-
 edit() {
     edit-file ".Taskfile"
 }
@@ -24,7 +18,6 @@ _edit-file() {
     echo "Editing $file..."
     $EDITOR "$file"
 }
-
 
 _help() {
     # List all tasks
