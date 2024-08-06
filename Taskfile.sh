@@ -37,14 +37,14 @@ _help() {
 
 _main() {
     # Load parent .Taskfile files
-    IFS='/' read -ra dirs <<< "$(pwd)"
-    dir=''
+    local IFS='/' read -ra dirs <<< "$(pwd)"
+    local dir=''
     for i in "${dirs[@]}"; do
         # Skip empty directories
         [ -z "$i" ] && continue
         dir="${dir}/${i}"   
 
-        tfiles=("${dir}/.Taskfile" "${dir}/.Taskfile.local")
+        local tfiles=("${dir}/.Taskfile" "${dir}/.Taskfile.local")
         for tf in "${tfiles[@]}"; do
             # Skip if the file doesn't exist
             [ ! -f $tf ] && continue
