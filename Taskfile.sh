@@ -1,27 +1,39 @@
 #!/usr/bin/env bash
 PATH=./node_modules/.bin:$PATH
 
-await_docker() {
+_await_docker() {
     until docker ps; do
 	echo -n . && sleep 1
     done
 }
 
-t:edit() {
+edit() {
     # Edit existing .Taskfile or this script.
     file=".Taskfile"
     if [ ! -f "$file" ]; then
-        file="$0"
+        touch $file
     fi
     echo "Editing $file..."
     $EDITOR "$file"
 }
 
-t:help() {
+edit_locdl() {
+    # Edit existing .Taskfile or this script.
+    file=".Taskfile"
+    if [ ! -f "$file" ]; then
+        touch $file
+    fi
+    echo "Editing $file..."
+    $EDITOR "$file"
+}
+
+help() {
     # List all tasks
     echo "$0 <task> <args>"
+    echo
     echo "Tasks:"
-    compgen -A function | grep --invert-match "_" | cat -n
+    compgen -A function | grep -v "^_" | cat -n
+
 }
 
 _main() {
@@ -40,8 +52,6 @@ _main() {
             echo "Using: $tf"; source "$tf"
         done
     done
-    echo
-
-    ${@:-"t:help"}    
+    ${@:-"help"}    
 }
 _main $@
