@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 PATH=./node_modules/.bin:$PATH
 
-_await_docker() {
+_await-docker() {
     until docker ps; do
 	echo -n . && sleep 1
     done
 }
 
 edit() {
-    # Edit existing .Taskfile or this script.
+    # Edit existing .Taskfile or create one.
     file=".Taskfile"
     if [ ! -f "$file" ]; then
         touch $file
@@ -17,9 +17,9 @@ edit() {
     $EDITOR "$file"
 }
 
-edit_locdl() {
-    # Edit existing .Taskfile or this script.
-    file=".Taskfile"
+edit-local() {
+    # Edit existing .Taskfile.local or create one.
+    file=".Taskfile.local"
     if [ ! -f "$file" ]; then
         touch $file
     fi
