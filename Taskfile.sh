@@ -8,26 +8,25 @@ _await-docker() {
 }
 
 edit() {
-    # Edit existing .Taskfile or create one.
-    file=".Taskfile"
-    if [ ! -f "$file" ]; then
-        touch $file
-    fi
-    echo "Editing $file..."
-    $EDITOR "$file"
+    edit-file ".Taskfile"
 }
 
 edit-local() {
-    # Edit existing .Taskfile.local or create one.
-    file=".Taskfile.local"
+    edit-file ".Taskfile.local"
+}
+
+_edit-file() {
+    local file="$1"
+    # Check if the file exists, if not, create it.
     if [ ! -f "$file" ]; then
-        touch $file
+        touch "$file"
     fi
     echo "Editing $file..."
     $EDITOR "$file"
 }
 
-help() {
+
+_help() {
     # List all tasks
     echo "$0 <task> <args>"
     echo
@@ -52,6 +51,6 @@ _main() {
             echo "Using: $tf"; source "$tf"
         done
     done
-    ${@:-"help"}    
+    ${@:-"_help"}    
 }
 _main $@
