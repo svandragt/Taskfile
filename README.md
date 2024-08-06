@@ -1,6 +1,6 @@
 # Taskfile
 
-This is a fork of Taskfile, optimised as a task runner. See https://github.com/adriancooney/Taskfile for the original project.
+This is a task runner using taskfiles containing bash functions. See https://github.com/adriancooney/Taskfile for the original project.
 
 This repository contains the runner `Taskfile.sh` for getting started in your own projects. It runs task files, a bash (or zsh etc.) script that contains functions that can be called via the runner. The runner detects any task files in the current, parent, grandparent etc directory  of the directory you're in. These must be called `.Taskfile` or `.Taskfile.local`. The difference is only in that the former should be added to a project's version control, and the latter should be added to `.gitignore`.
 
@@ -20,8 +20,8 @@ And to run a task:
 
 
     $ t sw CSW-22
-    Using: /Users/sander/.Taskfile
-    Using: /Users/sander/dev/.Taskfile
+    Using: $HOME/.Taskfile
+    Using: $HOME/dev/.Taskfile
      
     Switched to branch 'feature/CSW-22-automatic-language-redirection'
     Your branch is up to date with 'origin/feature/CSW-22-automatic-language-redirection'.
@@ -29,26 +29,26 @@ And to run a task:
 
 
 ## Install
-To "install", git clone this repo and add a symlink to `Taskfile.sh` to you a directory in your path, such as `~/bin/t`. Make the symlink executable. Klaar is kees!
 
+To "install", git clone this repo and add a alias to `Taskfile.sh`.
 ```
 $ git clone https://github.com/svandragt/Taskfile && cd Taskfile
-$ ln -s $PWD/Taskfile.sh ~/bin/t
-$ chmod +x ~/bin/t
+$ echo "alias t='/path/to/Taskfile.sh'" >> ~/.bashrc && source ~/.bashrc
+$ t
 ```
 
 ## Usage
 
-Open your directory and create a new `.Taskfile`. Edit it with your favourite editor and add your tasks.
+Create a new `.Taskfile` (shorthand `t _edit`). Edit it with your favourite editor and add your tasks.
 
-To view available tasks, use `t` (which calls the `help` task):
+To view available tasks, use `t` (which calls the `_help` task):
 
     $ t
-    Using: /Users/sander/.Taskfile
-    Using: /Users/sander/dev/.Taskfile
-     
-    /Users/sander/bin/Taskfile.sh <task> <args>
+    Using: $HOME/dev/.Taskfile
+    $HOME/dev/shell/Taskfile/Taskfile.sh <task> <args>
+    
     Tasks:
-         1  edit
-         2  help
-         3  sw
+         1 sw
+    
+    System tasks: _edit _edit-local _help
+

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 PATH=./node_modules/.bin:$PATH
 
-edit() {
-    edit-file ".Taskfile"
+_edit() {
+    _edit-file ".Taskfile"
 }
 
-edit-local() {
-    edit-file ".Taskfile.local"
+_edit-local() {
+    _edit-file ".Taskfile.local"
 }
 
 _edit-file() {
@@ -25,12 +25,14 @@ _help() {
     echo
     echo "Tasks:"
     compgen -A function | grep -v "^_" | cat -n
+    echo 
+    echo "System tasks: _edit _edit-local _help"
 
 }
 
 _main() {
     # Load parent .Taskfile files
-    local IFS='/' read -ra dirs <<< "$(pwd)"
+    IFS='/' read -ra dirs <<< "$(pwd)"
     local dir=''
     for i in "${dirs[@]}"; do
         # Skip empty directories
