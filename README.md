@@ -1,6 +1,6 @@
 # Taskfile
 
-This is a task runner using taskfiles containing bash functions. See https://github.com/adriancooney/Taskfile for the original project.
+This is a task runner using taskfiles containing bash functions. See https://github.com/adriancooney/Taskfile for the original project. It's a nicer menu and shorthand for sourcing a bash file with functions.
 
 This repository contains the runner `Taskfile.sh` for getting started in your own projects. It runs task files, a bash (or zsh etc.) script that contains functions that can be called via the runner. The runner detects any task files in the current, parent, grandparent etc directory  of the directory you're in. These must be called `.Taskfile` or `.Taskfile.local`. The difference is only in that the former should be added to a project's version control, and the latter should be added to `.gitignore`.
 
